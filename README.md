@@ -21,7 +21,11 @@ So the vector consists of max_letters blocks of length num_letters (in our case,
 
 LanguageDetector.py provided a command line interface allowing the user to select the languages the model should train with. After training is complete, the user can type in words to see what language the model thinks the word is from. In general, the model performs worse the more languages are compared at once.
 
+## Results
 
+Pair-wise comparison of all languages yields some intersting results:
+
+![Distinctness of Languages](doc/distinctness_languages.png)
 ## Sources
 
 The word lists used were created using the Leipzig Corpora Collection, provided under the Creative Commons License CC BY-NC by Universität Leipzig / Sächsische Akademie der Wissenschaften / InfAI.: https://wortschatz.uni-leipzig.de/en/
