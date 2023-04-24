@@ -1,8 +1,6 @@
 import numpy
 
 
-languages = {0: "Englisch", 1: "Deutsch", 2: "Französisch", 3: "Spanisch", 4: "Schwedisch",
-             5: "Polnisch", 6: "Finnisch"}
 # contains "all" lowercase letters needed to write all european languages written in roman letters, according to
 # http://recherche-redaktion.de/sprachen/paneurop.htm some of them are only used in livonian or esperanto
 alphabet = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9, 'k': 10, 'l': 11, 'm': 12,
@@ -18,18 +16,16 @@ alphabet = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i':
             'ż': 118, 'ŋ': 119, 'ð': 120, 'þ': 121
             }
 num_letters = len(alphabet) + 1
-num_lang = 7
 max_letters = 12
 words_per_language = 20000
 eps = 30
-nTrain = num_lang * words_per_language
 
 
 def getnumber(x):
     """
-    Gibt zu 'jedem' Buchstaben eine Zahl zurück. Bildet im wesentlichen eine Map
-    :param x:
-    :return:
+    Returns the index of a given character. If the character is not in the alphabet, assign index len(alphabet)
+    :param x: character
+    :return: index of the character in alphabet or len(alphabet) if not in alphabet
     """
     x = x.lower()
     if x in alphabet:
@@ -38,114 +34,11 @@ def getnumber(x):
         with open("data/special_chars.txt", "a", encoding="utf-8") as file:
             file.write(x+"\n")
         return len(alphabet)
-    # # Normales Alphabet
-    # if 97 <= ord(x) <= 122:
-    #     return ord(x)-97
-    # elif x == 'ä':
-    #     return 27
-    # elif x == 'ö':
-    #     return 28
-    # elif x == 'ü':
-    #     return 29
-    # elif x == 'ß':
-    #     return 30
-    # elif x == 'é':
-    #     return 31
-    # elif x == 'à':
-    #     return 32
-    # elif x == 'î':
-    #     return 33
-    # elif x == 'è':
-    #     return 34
-    # elif x == 'ó':
-    #     return 35
-    # elif x == 'å':
-    #     return 36
-    # elif x == 'ò':
-    #     return 37
-    # elif x == 'ł':
-    #     return 38
-    # elif x == 'ż':
-    #     return 39
-    # elif x == 'ñ':
-    #     return 40
-    # elif x == 'ą':
-    #     return 41
-    # elif x == 'í':
-    #     return 42
-    # elif x == 'á':
-    #     return 43
-    # elif x == 'ś':
-    #     return 44
-    # elif x == 'ń':
-    #     return 45
-    # elif x == 'â':
-    #     return 46
-    # elif x == '-':
-    #     return 47
-    # elif x == 'ę':
-    #     return 48
-    # elif x == ' ':
-    #     return 49
-    # elif x == 'ê':
-    #     return 50
-    # elif x == 'ć':
-    #     return 51
-    # elif x == 'ø':
-    #     return 52
-    # elif x == 'æ':
-    #     return 53
-    # elif x == '\'':
-    #     return 54
-    # elif x == "č":
-    #     return 55
-    # elif x == "ě":
-    #     return 56
-    # elif x == "ř":
-    #     return 57
-    # elif x == "š":
-    #     return 58
-    # elif x == "ý":
-    #     return 59
-    # elif x == "ž":
-    #     return 60
-    # elif x == "ð":  # ice
-    #     return 61
-    # elif x == "þ":  # ice
-    #     return 62
-    # elif x == "ã":  # por
-    #     return 63
-    # elif x == "ç":  # por/fre
-    #     return 64
-    # elif x == "ú":  # spa/cze
-    #     return 65
-    # elif x == "ő":  # hun
-    #     return 66
-    # elif x == 'ź':  # pol
-    #     return 67
-    # elif x == 'ů':  # cze
-    #     return 68
-    # elif x == 'ť':  # cze/slk
-    #     return 69
-    # elif x == 'õ':  # por
-    #     return 70
-    # elif x == 'đ':  # hrv/srp
-    #     return 71
-    # elif x == 'ë':  # dut/afr
-    #     return 72
-    # elif x == 'ï':
-    #     return 73   # dut/afr/fre
-    # elif x == 'ň':
-    #     return 74   # slk
-    # else:
-    #     with open("data/special_chars.txt", "a", encoding="utf-8") as file:
-    #         file.write(x+"\n")
-    #     return 75
 
 
 def getlist(word):
     """
-    Wandelt ein Wort in eine Liste der Länge num_letters*max_letters um.
+    Converts a word into a list of size num_letters*max_letters um.
     :param word:
     :return:
     """
