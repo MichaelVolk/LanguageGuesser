@@ -8,7 +8,7 @@ This project implements an artificial neural network trying to guess the languag
 *This step can be skipped since the word lists are already generated and simply serves as documentation*
 
 Using file_preparer.py, the files from the Leipzig Corpora Collection (see [Sources](#sources)) can be converted into files containing a single word per line.
-Words that are too short or too long are filtered out as well as words containing letters that don't appear in the language's alphabet. This step is important since the word lists were generated using news articles, which often contain words and phrases from different languages. Wikipedia is a good starting point to find out, which languages use which letters.
+Words that are too short or too long are filtered out as well as words containing letters that don't appear in the language's alphabet. This step is important since the word lists were generated using news articles, which often contain words and phrases from different languages. Wikipedia is a good starting point to find out which languages use which letters.
 
 ### Using a word as input
 
@@ -19,7 +19,7 @@ So the vector consists of max_letters blocks of length num_letters (in our case,
 
 ### Training the network
 
-LanguageDetector.py provided a command line interface allowing the user to select the languages the model should train with. After training is complete, the user can type in words to see what language the model thinks the word is from. In general, the model performs worse the more languages are compared at once.
+LanguageDetector.py provides a command line interface allowing the user to select the languages the model should train with. After training is complete, the user can type in words to see what language the model thinks the word is from. In general, the model performs worse the more languages are compared at once.
 
 ## Results
 
