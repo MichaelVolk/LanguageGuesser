@@ -23,9 +23,15 @@ LanguageDetector.py provided a command line interface allowing the user to selec
 
 ## Results
 
-Pair-wise comparison of all languages yields some intersting results:
+Pair-wise comparison of all languages yields some interesting results:
 
 ![Distinctness of Languages](doc/distinctness_languages.png)
+
+The values shown in the table above are the accuracy of the model when being trained on two languages. This value can be interpreted as some kind of "distinctness" of the languages:
+A high value (close to 1) means the model was able to correctly identify nearly every word, while a low value (close to 0.5) means the model performs no better than simply guessing.
+This can be observed when comparing Bosnian, Croatian and Serbian: Due to basically being the same language, the model performs only marginally better than guessing. The similarities between the continental Scandinavian languages, Danish, Swedish and Norwegian, can be seen clearly as well as the connection between Afrikaans and the Dutch language.
+
+Please note that the result from this model are not suitable for further linguistic analysis since the quality and scope of the word lists can vary greatly from language to language. 
 ## Sources
 
 The word lists used were created using the Leipzig Corpora Collection, provided under the Creative Commons License CC BY-NC by Universität Leipzig / Sächsische Akademie der Wissenschaften / InfAI.: https://wortschatz.uni-leipzig.de/en/
