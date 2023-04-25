@@ -15,7 +15,7 @@ Words that are too short or too long are filtered out as well as words containin
 Since neural networks take a (numeric) vector of some size as input, we need to convert the words into such vectors. For that, we specify a max amount of letters per word and then generate a vector of size
 > size_of_word_vector = number_of_different_letters * max_letters_per_word
 
-So the vector consists of max_letters blocks of length num_letters (in our case, 123). Each of those blocks represents a letter of the word using a kind of one-hot code: If the fifth letter of a word is 'a', then the first entry (since the index of 'a' in config.alphabet is 0) in the fifth block becomes 1 and all the others 0. Since some textbooks claim that using 0 and 1 can lead to rather large weights in the model, we use 0.99 instead of 0 and 0.01 instead of 0.
+So the vector consists of max_letters blocks of length num_letters (in our case, 123). Each of those blocks represents a letter of the word using a kind of one-hot code: If the fifth letter of a word is 'a', then the first entry (since the index of 'a' in config.alphabet is 0) in the fifth block becomes 1 and all the others 0.
 
 ### Training the network
 
