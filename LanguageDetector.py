@@ -6,8 +6,8 @@ import config as con
 max_letters = con.max_letters  # max amount of letters per word
 words_per_language = con.words_per_language  # how many words per language are used to train
 num_letters = con.num_letters  # amount of different letters in alphabet (123 for all european languages)
-listoflangs = ["bos", "cze", "dan", "dut", "eng", "fin", "fre", "ger", "hrv", "hun", "ice",
-               "ita", "nor", "pol", "por", "slk", "slv", "spa", "srp",  "swe", "ukr"]
+listoflangs = ["afr", "bos", "cze", "dan", "dut", "eng", "est", "fin", "fre", "ger", "hrv", "hun", "ice",
+               "ita", "lav", "lit", "nor", "pol", "por", "slk", "slv", "spa", "srp",  "swe", "ukr"]
 # Ask user to select the languages he wants the model to learn.
 user_select = True
 langs = []

@@ -7,11 +7,11 @@ words containing symbols not used in the language
 
 import re
 
-filename = "data/fra_news_2020_10K-words.txt"
+filename = "data/lit_newscrawl_2016_300K-words.txt"
 words = []
 minLen = 5
 maxLen = 20
-pattern = "^[a-zàâæçéèëîïôœùûüÿ]+$"  # put alphabet of language inside []
+pattern = "^[a-ząčęėįšųūž]+$"  # put alphabet of language inside []
 with open(filename, 'r', encoding='utf-8') as file:
     for line in file.readlines():
         lineSplit = line.split("\t")
@@ -26,5 +26,5 @@ with open(filename, 'r', encoding='utf-8') as file:
         words.append(word)
 print(len(words))
 
-with open("data/fra_10k.txt", "w", encoding="utf-8") as file:
+with open("data/lit_large.txt", "w", encoding="utf-8") as file:
     file.write("\n".join(words))

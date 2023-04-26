@@ -1,20 +1,20 @@
 # LanguageGuesser
 This project implements an artificial neural network which can be used to determine which language a word is from. The
 model was implemented using Tensorflow. The data folder contains word lists from (mostly) european languages, currently 
-there are 22 languages available.
+there are 25 languages available.
 
 ## How it works
 
-### File preparation
+### Data preparation
 
 *This step can be skipped since the word lists are already generated and simply serves as documentation*
 
-Using file_preparer.py, the files from the Leipzig Corpora Collection (see [Sources](#sources)) can be converted into 
-files containing a single word per line.
+Using file_preparer.py, the files from the Leipzig Corpora Collection (see [Sources](#sources)), namely the files
+language-source_year_size-words.txt can be converted into files containing a single word per line.
 Words that are too short or too long are filtered out as well as words containing letters that don't appear in the 
 language's alphabet. This step is important since the word lists were generated using news articles, which often 
-contain words and phrases from different languages. Wikipedia is a good starting point to find out which languages 
-use which letters.
+contain words and phrases from different languages. Numbers, dates and tokens consisting of more than one word are also 
+filtered out this way. Wikipedia is a good starting point to find out which languages use which letters.
 
 ### Using a word as input
 
