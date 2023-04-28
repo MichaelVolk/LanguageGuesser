@@ -15,10 +15,12 @@ alphabet = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i':
             'ù': 108, 'ū': 109, 'ų': 110, 'ů': 111, 'û': 112, 'ý': 113, 'ÿ': 114, 'ȳ': 115, 'ź': 116, 'ž': 117,
             'ż': 118, 'ŋ': 119, 'ð': 120, 'þ': 121
             }
+listoflangs = ["afr", "bos", "cze", "dan", "dut", "eng", "est", "fin", "fre", "ger", "hrv", "hun", "ice",
+               "ita", "lav", "lit", "nor", "pol", "por", "slk", "slv", "spa", "srp",  "swe", "ukr"]
 num_letters = len(alphabet) + 1
 max_letters = 12
 words_per_language = 20000
-eps = 30
+eps = 40
 
 
 def getnumber(x):

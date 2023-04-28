@@ -38,7 +38,7 @@ wordstest = []
 for lang in langs:
     langfile = "data/"+lang+"_large.txt"
     langlist = []
-    with open(langfile, 'r') as file:
+    with open(langfile, 'r', encoding="utf-8") as file:
         for line in file.readlines():
             langlist.append(line[0:max_letters].strip().lower() + str(langs.index(lang)))
     random.shuffle(langlist)
@@ -49,7 +49,7 @@ random.shuffle(wordstest)
 # setting up the model
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Dense(200, input_dim=num_letters * max_letters, activation='sigmoid'))
-model.add(tf.keras.layers.Dense(450, activation='sigmoid'))
+model.add(tf.keras.layers.Dense(250, activation='sigmoid'))
 model.add(tf.keras.layers.Dense(150, activation='sigmoid'))
 model.add(tf.keras.layers.Dense(len(langs), activation='softmax'))
 model.compile(optimizer='adam',
@@ -76,8 +76,6 @@ x_train = numpy.array(inputs)
 y_train = numpy.array(sol[0:nTrain])
 x_train = x_train[:, :, 0]  # these two steps are necessary because numpy sees the data as 3-dim array
 y_train = y_train[:, :, 0]
-# train the model
-model.fit(x_train, y_train, epochs=con.eps)
 # As above, create solution vectors, this time for test data
 sol = []
 for i in range(len(wordstest)):
@@ -97,7 +95,8 @@ x_test = numpy.array(inputs)
 y_test = numpy.array(sol[0:nTrain])
 x_test = x_test[:, :, 0]
 y_test = y_test[:, :, 0]
-# test the model
+# train and test the model
+model.fit(x_train, y_train, epochs=con.eps)
 x = model.evaluate(x_test, y_test)
 print(x)
 while True:
