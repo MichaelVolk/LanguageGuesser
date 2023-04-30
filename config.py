@@ -1,6 +1,5 @@
 import numpy
 
-
 # contains "all" lowercase letters needed to write all european languages written in roman letters, according to
 # http://recherche-redaktion.de/sprachen/paneurop.htm some of them are only used in livonian or esperanto
 alphabet = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i': 8, 'j': 9, 'k': 10, 'l': 11, 'm': 12,
@@ -15,15 +14,15 @@ alphabet = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i':
             'ù': 108, 'ū': 109, 'ų': 110, 'ů': 111, 'û': 112, 'ý': 113, 'ÿ': 114, 'ȳ': 115, 'ź': 116, 'ž': 117,
             'ż': 118, 'ŋ': 119, 'ð': 120, 'þ': 121
             }
-listoflangs = ["afr", "bos", "cze", "dan", "dut", "eng", "est", "fin", "fre", "ger", "hrv", "hun", "ice",
-               "ita", "lav", "lit", "nor", "pol", "por", "slk", "slv", "spa", "srp",  "swe", "ukr"]
+list_of_langs = ["afr", "bos", "cze", "dan", "dut", "eng", "est", "fin", "fre", "ger", "hrv", "hun", "ice",
+                 "ita", "lav", "lit", "nor", "pol", "por", "slk", "slv", "spa", "srp", "swe", "ukr"]
 num_letters = len(alphabet) + 1
 max_letters = 12
-words_per_language = 20000
-eps = 40
+words_per_language = 10000
+eps = 30
 
 
-def getnumber(x):
+def get_index_of_letter(x):
     """
     Returns the index of a given character. If the character is not in the alphabet, assign index len(alphabet)
     :param x: character
@@ -34,18 +33,18 @@ def getnumber(x):
         return alphabet.get(x)
     else:
         with open("data/special_chars.txt", "a", encoding="utf-8") as file:
-            file.write(x+"\n")
+            file.write(x + "\n")
         return len(alphabet)
 
 
-def getlist(word):
+def get_word_vector(word):
     """
     Converts a word into a list of size num_letters*max_letters um.
     :param word:
     :return:
     """
     word = word[0:max_letters].lower()
-    wordlist = numpy.zeros((num_letters*max_letters, 1)) + 0.01
+    wordlist = numpy.zeros((num_letters * max_letters, 1)) + 0.01
     for i, c in enumerate(word):
-        wordlist[i * num_letters + getnumber(c)] = 0.99
+        wordlist[i * num_letters + get_index_of_letter(c)] = 0.99
     return wordlist
